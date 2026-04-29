@@ -8,8 +8,8 @@ app.use(express.urlencoded({ extended: true }));
 // ==============================
 // KONFIGURASI — ISI DI SINI
 // ==============================
-const GROQ_API_KEY = "gsk_XXXXXX"; // Ganti dengan Groq API Key kamu
-const FONNTE_TOKEN = "XXXXXX";     // Ganti dengan Token Fonnte kamu
+const GROQ_API_KEY = "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"; // Ganti dengan Groq API Key kamu
+const FONNTE_TOKEN = "PkkMyoxoHAKhKpeZcHE1";     // Ganti dengan Token Fonnte kamu
 const NAMA_BOT = "Asisten AI";     // Nama bot kamu
 const SISTEM_PROMPT = `Kamu adalah ${NAMA_BOT}, asisten WhatsApp yang ramah dan membantu. 
 Jawab pertanyaan customer dengan sopan, singkat, dan jelas dalam bahasa Indonesia.
