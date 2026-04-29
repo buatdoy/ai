@@ -163,10 +163,6 @@ async function kirimWA(target, message) {
   );
 }
 
-async function notifikasiAdmin(sender, pertanyaan) {
-  const pesan = `⚠️ *Pertanyaan tidak terjawab oleh Benet*\n\n👤 Dari: ${sender}\n❓ Pertanyaan: ${pertanyaan}\n\n_Silakan update sistem prompt atau balas customer secara manual._`;
-  await kirimWA(ADMIN_NUMBER, pesan);
-}
 
 app.get("/", (req, res) => {
   res.send("Benet - movus WA Bot aktif! ✅");
@@ -206,7 +202,6 @@ app.post("/webhook", async (req, res) => {
     );
 
     let reply = groqRes.data.choices[0].message.content;
-    const tidakTahu = reply.includes("TIDAK_TAHU");
     reply = reply.replace("TIDAK_TAHU", "").trim();
 
     history.push({ role: "assistant", content: reply });
@@ -214,9 +209,6 @@ app.post("/webhook", async (req, res) => {
 
     await kirimWA(sender, reply);
 
-    if (tidakTahu) {
-      await notifikasiAdmin(sender, message);
-    }
 
     console.log(`Balasan ke ${sender}: ${reply}`);
     res.sendStatus(200);
