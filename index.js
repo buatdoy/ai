@@ -49,7 +49,7 @@ app.post("/webhook", async (req, res) => {
     const groqRes = await axios.post(
       "https://api.groq.com/openai/v1/chat/completions",
       {
-        model: "llama3-8b-8192",
+        model: "llama3-70b-8192",
         messages: [
           { role: "system", content: SISTEM_PROMPT },
           ...chatHistory[sender],
