@@ -13,6 +13,7 @@ const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const FONNTE_TOKEN = process.env.FONNTE_TOKEN;
 const MONGODB_URI = process.env.MONGODB_URI;
 const ADMIN_NUMBER = "628153553324";
+const EXCLUDED_NUMBERS = ["6281586663847", "6282124928840", "6281271468787"];
 
 const SISTEM_PROMPT = `Kamu adalah Benet, staf customer service movus yang ramah dan sopan.
 Balas dengan maksimal 3 kalimat saja. Singkat, padat, dan jelas. Jangan bertele-tele.
@@ -175,6 +176,7 @@ app.post("/webhook", async (req, res) => {
   try {
     const { sender, message } = req.body;
     if (!sender || !message) return res.sendStatus(200);
+    if (EXCLUDED_NUMBERS.includes(sender)) return res.sendStatus(200);
 
     console.log(`Pesan dari ${sender}: ${message}`);
 
