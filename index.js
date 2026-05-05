@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 // ==============================
 // KONFIGURASI
 // ==============================
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const FONNTE_TOKEN = process.env.FONNTE_TOKEN;
 const MONGODB_URI = process.env.MONGODB_URI;
 const EXCLUDED_NUMBERS = ["6281586663847", "6282124928840", "6281271468787"];
@@ -185,31 +185,25 @@ app.post("/webhook", async (req, res) => {
       history = history.slice(-20);
     }
 
-    // Format history untuk Gemini
-    const geminiHistory = history.slice(0, -1).map(msg => ({
-      role: msg.role === "assistant" ? "model" : "user",
-      parts: [{ text: msg.content }]
-    }));
-
-    // Kirim ke Gemini
-    const geminiRes = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+    const groqRes = await axios.post(
+      "https://api.groq.com/openai/v1/chat/completions",
       {
-        system_instruction: {
-          parts: [{ text: SISTEM_PROMPT }]
-        },
-        contents: [
-          ...geminiHistory,
-          { role: "user", parts: [{ text: message }] }
+        model: "llama-3.1-8b-instant",
+        messages: [
+          { role: "system", content: SISTEM_PROMPT },
+          ...history,
         ],
-        generationConfig: {
-          maxOutputTokens: 200,
-          temperature: 0.7,
-        }
+        max_tokens: 200,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${GROQ_API_KEY}`,
+          "Content-Type": "application/json",
+        },
       }
     );
 
-    let reply = geminiRes.data.candidates[0].content.parts[0].text;
+    let reply = groqRes.data.choices[0].message.content;
     reply = reply.trim();
 
     history.push({ role: "assistant", content: reply });
