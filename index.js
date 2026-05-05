@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 // ==============================
 // KONFIGURASI
 // ==============================
-const GROQ_API_KEY = process.env.GROQ_API_KEY;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const FONNTE_TOKEN = process.env.FONNTE_TOKEN;
 const MONGODB_URI = process.env.MONGODB_URI;
 const EXCLUDED_NUMBERS = ["6281586663847", "6282124928840", "6281271468787"];
@@ -121,7 +121,6 @@ Jawaban: "Silakan minta temannya kirim foto KTP dulu ya Pak/Bu, pendaftaran grat
 - Kalau ada yang mau daftar, tertarik, atau tanya cara daftar → SELALU minta foto KTP dulu & ingatkan pendaftaran GRATIS
 - Jawab singkat, langsung ke inti, jangan bertele-tele
 - Pakai sapaan Pak/Bu`;
-// ==============================
 
 let db;
 
@@ -186,26 +185,32 @@ app.post("/webhook", async (req, res) => {
       history = history.slice(-20);
     }
 
-    const groqRes = await axios.post(
-      "https://api.groq.com/openai/v1/chat/completions",
+    // Format history untuk Gemini
+    const geminiHistory = history.slice(0, -1).map(msg => ({
+      role: msg.role === "assistant" ? "model" : "user",
+      parts: [{ text: msg.content }]
+    }));
+
+    // Kirim ke Gemini
+    const geminiRes = await axios.post(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
       {
-        model: "llama-3.1-8b-instant",
-        messages: [
-          { role: "system", content: SISTEM_PROMPT },
-          ...history,
-        ],
-        max_tokens: 200,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${GROQ_API_KEY}`,
-          "Content-Type": "application/json",
+        system_instruction: {
+          parts: [{ text: SISTEM_PROMPT }]
         },
+        contents: [
+          ...geminiHistory,
+          { role: "user", parts: [{ text: message }] }
+        ],
+        generationConfig: {
+          maxOutputTokens: 200,
+          temperature: 0.7,
+        }
       }
     );
 
-    let reply = groqRes.data.choices[0].message.content;
-    reply = reply.replace("TIDAK_TAHU", "").trim();
+    let reply = geminiRes.data.candidates[0].content.parts[0].text;
+    reply = reply.trim();
 
     history.push({ role: "assistant", content: reply });
     await saveHistory(sender, history);
