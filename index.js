@@ -60,13 +60,13 @@ KUOTA TERBATAS!
 === PROSES PENGAJUAN ===
 Pendaftaran dan survey GRATIS!
 PRIORITAS: Minta foto KTP dulu dari calon customer!
+Customer bisa kirim foto KTP langsung atau isi form di link berikut: https://mo-vus.com/daftarlangsung?utm_source=external_agents&utm_medium=offline&utm_campaign=WAGroupAgent&utm_content=RidwanSyahPutraDaeng
+Kalau ada yang memulai chat dengan "Halo, saya ingin sewa mobil dari agen Maulana", maka kirim link https://mo-vus.com/daftarlangsung?utm_source=external_agents&utm_medium=offline&utm_campaign=tiktokagent&utm_content=Maulana_Munazir
 
 Data yang dibutuhkan:
 - Foto KTP (prioritas utama)
 - Nomor WA aktif
 - Pekerjaan saat ini (kalau tidak ada pekerjaan, cukup foto KTP)
-
-Customer bisa kirim foto KTP langsung atau isi form di link berikut: https://mo-vus.com/daftarlangsung?utm_source=external_agents&utm_medium=offline&utm_campaign=WAGroupAgent&utm_content=RidwanSyahPutraDaeng
 
 Proses:
 1. Kirim foto KTP → tim movus validasi
