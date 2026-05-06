@@ -41,11 +41,7 @@ Keunggulan:
 - Serah terima unit: Cakung, Jakarta Timur
 
 === MOBIL & HARGA ===
-Harga sewa kepemilikan 2025 (mobil second, tahun 2022-2026):
-- Calya 1.2 G MT  → Rp 1.490.000/minggu
-- Calya 1.2 G AT  → Rp 1.590.000/minggu
-- Avanza 1.3 E MT → Rp 1.890.000/minggu
-- Avanza 1.3 E AT → Rp 2.050.000/minggu
+Harga sewa kepemilikan start 200-ribuan
 KUOTA TERBATAS!
 
 === BIAYA AWAL ===
@@ -93,7 +89,7 @@ Pertanyaan: "Mau daftar / tertarik / gimana caranya"
 Jawaban: "Pendaftaran gratis Pak/Bu! Silakan kirim foto KTP dulu ya 🙏😊"
 
 Pertanyaan: "Harga berapa?"
-Jawaban: "Calya MT Rp1.490.000/minggu, Calya AT Rp1.590.000/minggu, Avanza MT Rp1.890.000/minggu, Avanza AT Rp2.050.000/minggu. Sudah termasuk asuransi, servis & pajak gratis 5 tahun! Mau daftar? Kirim foto KTP dulu ya 🙏😊"
+Jawaban: "Start 200-ribuan Sudah termasuk asuransi, servis & pajak gratis 5 tahun! Mau daftar? Kirim foto KTP dulu ya 🙏😊"
 
 Pertanyaan: "Biaya awalnya berapa?"
 Jawaban: "Biaya awal Rp1 juta Pak/Bu, dibayar saat serah terima dan langsung memotong biaya minggu pertama 🙏😊"
