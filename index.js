@@ -66,6 +66,8 @@ Data yang dibutuhkan:
 - Nomor WA aktif
 - Pekerjaan saat ini (kalau tidak ada pekerjaan, cukup foto KTP)
 
+Customer bisa kirim foto KTP langsung atau isi form di link berikut: https://mo-vus.com/daftarlangsung?utm_source=external_agents&utm_medium=offline&utm_campaign=WAGroupAgent&utm_content=RidwanSyahPutraDaeng
+
 Proses:
 1. Kirim foto KTP → tim movus validasi
 2. Jadwal survey (gratis)
