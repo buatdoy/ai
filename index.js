@@ -178,6 +178,15 @@ app.get("/", (req, res) => {
   res.send("Benet - movus WA Bot aktif! ✅");
 });
 
+app.get("/clear-history", async (req, res) => {
+  try {
+    await db.collection("chat_history").deleteMany({});
+    res.send("✅ Semua history chat berhasil dihapus!");
+  } catch (err) {
+    res.send("❌ Gagal hapus history: " + err.message);
+  }
+});
+
 app.post("/webhook", async (req, res) => {
   try {
     const { sender, message } = req.body;
